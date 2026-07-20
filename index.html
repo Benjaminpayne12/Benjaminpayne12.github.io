@@ -6,9 +6,8 @@
     <title>Ayetowo Friday Sejiro | Senior Web Developer</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <script src="https://unpkg.com/lucide@latest"></script>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Space+Grotesk:wght@500;600&amp;display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600&display=swap');
         
         :root {
             --accent: 34 211 238;
@@ -27,7 +26,7 @@
         }
 
         .glass {
-            background: rgba(15, 23, 42, 0.75);
+            background: rgba(15, 23, 42, 0.8);
             backdrop-filter: blur(16px);
         }
 
@@ -37,7 +36,6 @@
         
         .project-card:hover {
             transform: translateY(-8px);
-            box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
         }
 
         .nav-link {
@@ -60,34 +58,32 @@
             width: 100%;
         }
 
-        .section-header {
-            position: relative;
-        }
-        
-        .section-header:after {
-            content: '';
-            position: absolute;
-            width: 60px;
-            height: 3px;
-            background: rgb(34 211 238);
-            bottom: -8px;
-            left: 0;
-        }
-
         .toast {
             animation: slideUp 0.3s ease forwards;
         }
 
         @keyframes slideUp {
-            from {
-                transform: translateY(20px);
-                opacity: 0;
-            }
-            to {
-                transform: translateY(0);
-                opacity: 1;
-            }
+            from { transform: translateY(30px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
         }
+
+        /* Light mode */
+        .light .hero-bg { background: linear-gradient(135deg, #e0f2fe 0%, #bae6fd 100%); }
+        .light .glass { background: rgba(255,255,255,0.85); }
+        .light .bg-zinc-950 { background-color: #f8fafc; }
+        .light .bg-black { background-color: #f8fafc; }
+        .light .bg-zinc-900 { background-color: #f8fafc; }
+        .light .bg-zinc-800 { background-color: #e2e8f0; }
+        body.light.bg-zinc-950 { background-color: #f8fafc; }
+        body.light.bg-black { background-color: #f8fafc; }
+        body.light.bg-zinc-900 { background-color: #f8fafc; }
+        body.light.bg-zinc-800 { background-color: #e2e8f0; }
+        .light .border-zinc-800 { border-color: #cbd5e1; }
+        .light .border-zinc-700 { border-color: #94a3b8; }
+        .light .text-white { color: #0f172a; }
+        .light .text-zinc-200 { color: #0f172a; }
+        .light .text-zinc-300 { color: #334155; }
+        .light .text-zinc-400 { color: #64748b; }
     </style>
 </head>
 <body class="tail-container bg-zinc-950 text-zinc-200">
@@ -95,53 +91,61 @@
     <nav class="sticky top-0 z-50 glass border-b border-zinc-800">
         <div class="max-w-7xl mx-auto px-6 py-5 flex items-center justify-between">
             <div class="flex items-center gap-x-3">
-                <img src="face.jpg" alt="Logo" class="w-9 h-9 bg-cyan-500 rounded-2xl flex items-center justify-center text-white font-bold text-xl">
-                <div>
-                    <span class="heading-font text-2xl font-semibold tracking-tighter">FRIDAY</span>
-                </div>
+                <div class="w-9 h-9 bg-cyan-500 rounded-2xl flex items-center justify-center text-white font-bold text-xl">FS</div>
+                <span class="heading-font text-2xl font-semibold tracking-tighter text-white">FRIDAY</span>
             </div>
             
             <!-- Desktop Menu -->
             <div class="hidden md:flex items-center gap-x-8 text-sm font-medium">
-                <a href="#home" onclick="navigateTo('home')" class="nav-link active text-zinc-300 hover:text-white">Home</a>
-                <a href="#skills" onclick="navigateTo('skills')" class="nav-link text-zinc-300 hover:text-white">Skills</a>
-                <a href="#experience" onclick="navigateTo('experience')" class="nav-link text-zinc-300 hover:text-white">Experience</a>
-                <a href="#projects" onclick="navigateTo('projects')" class="nav-link text-zinc-300 hover:text-white">Projects</a>
-                <a href="#education" onclick="navigateTo('education')" class="nav-link text-zinc-300 hover:text-white">Education</a>
-                <a href="#contact" onclick="navigateTo('contact')" class="nav-link text-zinc-300 hover:text-white">Contact</a>
+                <a href="#home" onclick="navigateTo('home');" class="nav-link active text-white">Home</a>
+                <a href="#skills" onclick="navigateTo('skills');" class="nav-link text-white">Skills</a>
+                <a href="#experience" onclick="navigateTo('experience');" class="nav-link text-white">Experience</a>
+                <a href="#projects" onclick="navigateTo('projects');" class="nav-link text-white">Projects</a>
+                <a href="#education" onclick="navigateTo('education');" class="nav-link text-white">Education</a>
+                <a href="#contact" onclick="navigateTo('contact');" class="nav-link text-white">Contact</a>
             </div>
             
             <div class="flex items-center gap-x-4">
+                <!-- Theme Toggle -->
+                <button onclick="toggleTheme()" id="theme-toggle"
+                        aria-label="Toggle theme" title="Toggle theme"
+                        class="w-11 h-11 flex items-center justify-center text-xl rounded-2xl hover:bg-white/10 transition-colors">
+                    <i class="fa-solid fa-moon"></i>
+                </button>
+                
                 <a href="#" onclick="downloadCV()" 
-                   class="px-5 py-2.5 text-sm font-semibold border border-cyan-400 text-cyan-400 hover:bg-cyan-400 hover:text-zinc-950 rounded-3xl transition-all flex items-center gap-x-2">
+                   class="hidden sm:flex px-5 py-2.5 text-sm font-semibold border border-cyan-400 text-cyan-400 hover:bg-cyan-400 hover:text-zinc-950 rounded-3xl transition-all items-center gap-x-2">
                     <i class="fa-solid fa-download"></i>
                     <span>CV</span>
                 </a>
                 
-                <!-- Mobile Hamburger -->
-                <button id="mobile-menu-btn"
-                        class="md:hidden w-11 h-11 flex items-center justify-center text-2xl">
+                <!-- Hamburger -->
+                <button id="mobile-menu-btn" onclick="toggleMobileMenu()"
+                        class="md:hidden w-11 h-11 flex items-center justify-center text-3xl text-white transition-transform"
+                        aria-label="Toggle navigation menu">
                     <i class="fa-solid fa-bars"></i>
                 </button>
             </div>
         </div>
         
-        <!-- Mobile Menu -->
-        <div id="mobile-menu" class="hidden md:hidden fixed inset-0 bg-zinc-950 z-50 pt-20 px-6">
-            <div class="flex flex-col gap-y-6 text-lg font-medium">
-                <a href="#home" onclick="toggleMobileMenu()" class="py-3 border-b border-zinc-800">Home</a>
-                <a href="#skills" onclick="toggleMobileMenu()" class="py-3 border-b border-zinc-800">Skills</a>
-                <a href="#experience" onclick="toggleMobileMenu()" class="py-3 border-b border-zinc-800">Experience</a>
-                <a href="#projects" onclick="toggleMobileMenu()" class="py-3 border-b border-zinc-800">Projects</a>
-                <a href="#education" onclick="toggleMobileMenu()" class="py-3 border-b border-zinc-800">Education</a>
-                <a href="#contact" onclick="toggleMobileMenu()" class="py-3 border-b border-zinc-800">Contact</a>
+        <!-- MOBILE MENU -->
+        <div id="mobile-menu" class="hidden fixed inset-0 bg-zinc-950 z-[999] md:hidden pt-20">
+            <div class="px-8 flex flex-col h-full">
+                <div class="flex-1 flex flex-col gap-y-8 text-2xl font-medium pt-10">
+                    <a href="#home" onclick="navigateTo('home')" class="py-3">Home</a>
+                    <a href="#skills" onclick="navigateTo('skills')" class="py-3">Skills</a>
+                    <a href="#experience" onclick="navigateTo('experience')" class="py-3">Experience</a>
+                    <a href="#projects" onclick="navigateTo('projects')" class="py-3">Projects</a>
+                    <a href="#education" onclick="navigateTo('education')" class="py-3">Education</a>
+                    <a href="#contact" onclick="navigateTo('contact')" class="py-3">Contact</a>
+                </div>
                 
-                <div class="pt-6">
-                    <a href="#" onclick="downloadCV();toggleMobileMenu()" 
-                       class="w-full flex justify-center items-center gap-x-3 bg-cyan-500 hover:bg-cyan-400 transition-colors text-zinc-950 font-semibold py-4 rounded-3xl">
+                <div class="pb-12">
+                    <button onclick="downloadCV(); toggleMobileMenu()" 
+                            class="w-full py-6 bg-cyan-500 text-zinc-950 font-semibold rounded-3xl flex items-center justify-center gap-x-3 text-lg">
                         <i class="fa-solid fa-download"></i>
                         DOWNLOAD CV
-                    </a>
+                    </button>
                 </div>
             </div>
         </div>
@@ -166,7 +170,7 @@
                 </div>
                 
                 <p class="max-w-md text-zinc-400 text-lg">
-                    Highly motivated Full Stack Web Developer with 10+ years of experience building scalable, secure, and high-performance web applications. Specialized in PHP, JavaScript, MySQL, and modern front-end tech.
+                    Highly motivated Full Stack Web Developer with 5+ years of experience building scalable, secure, and high-performance web applications. Specialized in PHP, JavaScript, MySQL, and modern front-end tech.
                 </p>
                 
                 <div class="flex flex-wrap gap-4">
@@ -201,14 +205,14 @@
             </div>
             
             <!-- Hero Visual -->
-            <div class="hidden md:flex justify-center">
+            <div class="flex justify-center">
                 <div class="relative">
-                    <div class="w-80 h-80 bg-gradient-to-br from-cyan-400 via-indigo-500 to-emerald-400 rounded-[4rem] rotate-12 shadow-2xl"></div>
+                    <div class="w-64 h-64 sm:w-72 sm:h-72 md:w-80 md:h-80 bg-gradient-to-br from-cyan-400 via-indigo-500 to-emerald-400 rounded-[4rem] rotate-12 shadow-2xl"></div>
                     <div class="absolute inset-0 flex items-center justify-center -rotate-10">
-                        <div class="w-72 h-72 bg-zinc-900 rounded-3xl overflow-hidden border-8 border-zinc-800">
+                        <div class="w-56 h-56 sm:w-64 sm:h-64 md:w-72 md:h-72 bg-zinc-900 rounded-3xl overflow-hidden border-8 border-zinc-800">
                             <div class="h-full w-full bg-[radial-gradient(at_center,#27272a_30%,#18181b)] flex items-center justify-center">
                                 <div class="text-center">
-                                    <img src="face.jpg" alt="Profile Image" class="w-50 h-50 rounded-full mx-auto">
+                                    <img src="face.jpg" alt="Profile Image" class="w-40 h-40 sm:w-44 sm:h-44 md:w-48 md:h-48 rounded-full mx-auto object-cover">
                                 </div>
                             </div>
                         </div>
@@ -747,101 +751,76 @@
             }, 4000)
         }
         
-        // Download CV
-        window.downloadCV = function() {
-            showToast("CV download started (original DOCX attached in conversation)")
-            // In real environment this would trigger a download
-            // For demo purposes, we show toast
-        }
+    
+        // Mobile Menu
+        let mobileOpen = false;
         
-        // Mobile menu
         function toggleMobileMenu() {
-            const menu = document.getElementById("mobile-menu")
-            const icon = document.getElementById("mobile-menu-btn").querySelector("i")
+            const menu = document.getElementById("mobile-menu");
+            const icon = document.getElementById("mobile-menu-btn").querySelector("i");
             
-            if (menu.classList.contains("hidden")) {
-                menu.classList.remove("hidden")
-                icon.classList.remove("fa-bars")
-                icon.classList.add("fa-xmark")
+            mobileOpen = !mobileOpen;
+            
+            if (mobileOpen) {
+                menu.classList.remove("hidden");
+                icon.classList.remove("fa-bars");
+                icon.classList.add("fa-xmark");
             } else {
-                menu.classList.add("hidden")
-                icon.classList.add("fa-bars")
-                icon.classList.remove("fa-xmark")
+                menu.classList.add("hidden");
+                icon.classList.add("fa-bars");
+                icon.classList.remove("fa-xmark");
             }
         }
         
-        // Smooth scroll navigation
-        window.navigateTo = function(section) {
-            document.getElementById(section).scrollIntoView({
-                behavior: "smooth"
-            })
-            
+        // Theme Toggle
+        function toggleTheme() {
+            const isLight = document.documentElement.classList.toggle("light");
+            document.body.classList.toggle("light", isLight);
+            const icon = document.getElementById("theme-toggle");
+            icon.innerHTML = isLight ? 
+                '<i class="fa-solid fa-sun"></i>' : 
+                '<i class="fa-solid fa-moon"></i>';
+        }
+        
+        // Navigation
+        function navigateTo(section) {
+            const el = document.getElementById(section);
+            if (el) {
+                el.scrollIntoView({ behavior: "smooth" });
+            }
             // Close mobile menu if open
-            const mobileMenu = document.getElementById("mobile-menu")
-            if (!mobileMenu.classList.contains("hidden")) {
-                toggleMobileMenu()
+            if (!document.getElementById("mobile-menu").classList.contains("hidden")) {
+                toggleMobileMenu();
             }
         }
         
-        // Active nav link
-        function updateActiveNav() {
-            const sections = ["home", "skills", "experience", "projects", "education", "contact"]
-            const navLinks = document.querySelectorAll(".nav-link")
-            
-            window.addEventListener("scroll", () => {
-                let current = ""
-                
-                sections.forEach(sectionId => {
-                    const section = document.getElementById(sectionId)
-                    const sectionTop = section.offsetTop
-                    
-                    if (scrollY >= sectionTop - 200) {
-                        current = sectionId
-                    }
-                })
-                
-                navLinks.forEach(link => {
-                    link.classList.remove("active")
-                    if (link.getAttribute("href") === `#${current}`) {
-                        link.classList.add("active")
-                    }
-                })
-            })
+        // Download CV
+        function downloadCV() {
+            alert("CV download would start here (original DOCX provided).");
         }
         
-        // Initialize everything
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', function(e) {
+            const menu = document.getElementById("mobile-menu");
+            const btn = document.getElementById("mobile-menu-btn");
+            if (mobileOpen && !menu.contains(e.target) && e.target !== btn) {
+                toggleMobileMenu();
+            }
+        });
+        
+        // Keyboard support
+        document.addEventListener("keydown", function(e) {
+            if (e.key === "Escape" && mobileOpen) {
+                toggleMobileMenu();
+            }
+        });
+        
+        // Initialize
         function initialize() {
-            // Render all projects initially
-            renderProjects(projects)
-            
-            // Tailwind ready
-            initTailwind()
-            
-            // Lucide icons (if needed)
-            lucide.createIcons()
-            
-            // Active nav
-            updateActiveNav()
-            
-            // Keyboard escape for modal
-            document.addEventListener("keydown", function(e) {
-                if (e.key === "Escape") {
-                    const modal = document.getElementById("project-modal")
-                    if (!modal.classList.contains("hidden")) closeModal()
-                }
-            })
-            
-            // Click outside modal to close
-            const modal = document.getElementById("project-modal")
-            modal.addEventListener("click", function(e) {
-                if (e.target === modal) closeModal()
-            })
-            
-            console.log('%c✅ Portfolio ready for Ayetowo Friday Sejiro', 'color:#22d3ee; font-family:monospace')
+            console.log("%c✅ Portfolio loaded successfully with fixed mobile nav", "color:#22d3ee; font-family:monospace");
         }
         
-        // Boot the app
-        window.onload = initialize
+        window.onload = initialize;
     </script>
 </body>
 </html>
