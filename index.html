@@ -67,6 +67,24 @@
             to { transform: translateY(0); opacity: 1; }
         }
 
+        .fade-up {
+            animation: fadeUp 0.7s ease both;
+        }
+
+        @keyframes fadeUp {
+            from { transform: translateY(18px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .fade-in {
+            animation: fadeIn 0.85s ease both;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
         /* Light mode */
         .light .hero-bg { background: linear-gradient(135deg, #e0f2fe 0%, #bae6fd 100%); }
         .light .glass { background: rgba(255,255,255,0.85); }
@@ -499,20 +517,69 @@
                     </button>
                 </form>
             </div>
-            
-            <!-- Contact Info -->
-            <div class="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8 text-center md:text-left">
-                <div class="flex flex-col items-center md:items-start">
-                    <i class="fa-solid fa-phone text-3xl text-cyan-400 mb-4"></i>
-                    <div class="font-medium">+234 705 352 6435</div>
-                </div>
-                <div class="flex flex-col items-center md:items-start">
-                    <i class="fa-solid fa-envelope text-3xl text-cyan-400 mb-4"></i>
-                    <a href="mailto:sejirofriday123@gmail.com" class="font-medium hover:text-cyan-400">sejirofriday123@gmail.com</a>
-                </div>
-                <div class="flex flex-col items-center md:items-start">
-                    <i class="fa-solid fa-map-marker-alt text-3xl text-cyan-400 mb-4"></i>
-                    <div class="font-medium">Badagry, Lagos, Nigeria</div>
+
+            <!-- Contact Info + Socials -->
+            <div class="mt-16 bg-zinc-950 border border-zinc-800 rounded-3xl p-8 fade-up">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-10 text-center md:text-left">
+                    <div class="space-y-8">
+                      <div class="flex items-center justify-center md:justify-start gap-x-3 mb-4 animate-fade-in">
+                            <i class="fa-solid fa-address-book text-cyan-400 text-2xl"></i>
+                            <div>
+                                <div class="text-sm uppercase tracking-widest text-cyan-400 font-semibold">Contact</div>
+                                <div class="text-xl font-semibold mt-1">Contact me</div>
+                            </div>
+                        </div>
+                        <div class="flex flex-col items-center md:items-start bg-zinc-900 border border-zinc-800 rounded-3xl p-6 animate-fade-in">
+                            <i class="fa-solid fa-phone text-3xl text-cyan-400 mb-4"></i>
+                            <a href="tel:+2347053526435" class="font-medium hover:text-cyan-400">+234 705 352 6435</a>
+                        </div>
+                        <div class="flex flex-col items-center md:items-start bg-zinc-900 border border-zinc-800 rounded-3xl p-6 animate-fade-in">
+                            <i class="fa-solid fa-envelope text-3xl text-cyan-400 mb-4"></i>
+                            <a href="mailto:sejirofriday123@gmail.com" class="font-medium hover:text-cyan-400">sejirofriday123@gmail.com</a>
+                        </div>
+                        <div class="flex flex-col items-center md:items-start bg-zinc-900 border border-zinc-800 rounded-3xl p-6 animate-fade-in">
+                            <i class="fa-solid fa-map-marker-alt text-3xl text-cyan-400 mb-4"></i>
+                            <a href="https://maps.google.com/?q=Badagry,+Lagos,+Nigeria" class="font-medium hover:text-cyan-400" target="_blank" rel="noopener">Badagry, Lagos, Nigeria</a>
+                        </div>
+                    </div>
+                    <div class="space-y-6">
+                        <div class="flex items-center justify-center md:justify-start gap-x-3 mb-4 animate-fade-in">
+                            <i class="fa-solid fa-share-nodes text-cyan-400 text-2xl"></i>
+                            <div>
+                                <div class="text-sm uppercase tracking-widest text-cyan-400 font-semibold">Socials</div>
+                                <div class="text-xl font-semibold mt-1">Connect with me</div>
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-1 gap-4">
+                            <a href="https://wa.me/2347053526435" target="_blank" rel="noopener" class="flex items-center gap-x-4 rounded-3xl border border-zinc-700 bg-zinc-900 px-5 py-4 hover:border-cyan-400 hover:bg-zinc-800 transition-colors animate-fade-in">
+                                <span class="w-12 h-12 rounded-2xl bg-emerald-500 text-zinc-950 flex items-center justify-center text-xl">
+                                    <i class="fa-brands fa-whatsapp"></i>
+                                </span>
+                                <div class="text-left">
+                                    <div class="font-semibold">WhatsApp</div>
+                                    <div class="text-sm text-zinc-400">Chat with me</div>
+                                </div>
+                            </a>
+                            <a href="https://instagram.com/yourusername" target="_blank" rel="noopener" class="flex items-center gap-x-4 rounded-3xl border border-zinc-700 bg-zinc-900 px-5 py-4 hover:border-cyan-400 hover:bg-zinc-800 transition-colors animate-fade-in">
+                                <span class="w-12 h-12 rounded-2xl bg-pink-500 text-zinc-950 flex items-center justify-center text-xl">
+                                    <i class="fa-brands fa-instagram"></i>
+                                </span>
+                                <div class="text-left">
+                                    <div class="font-semibold">Instagram</div>
+                                    <div class="text-sm text-zinc-400">Follow my work</div>
+                                </div>
+                            </a>
+                            <a href="https://github.com/Benjaminpayne12" target="_blank" rel="noopener" class="flex items-center gap-x-4 rounded-3xl border border-zinc-700 bg-zinc-900 px-5 py-4 hover:border-cyan-400 hover:bg-zinc-800 transition-colors animate-fade-in">
+                                <span class="w-12 h-12 rounded-2xl bg-zinc-200 text-zinc-950 flex items-center justify-center text-xl">
+                                    <i class="fa-brands fa-github"></i>
+                                </span>
+                                <div class="text-left">
+                                    <div class="font-semibold">GitHub</div>
+                                    <div class="text-sm text-zinc-400">View my projects</div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
