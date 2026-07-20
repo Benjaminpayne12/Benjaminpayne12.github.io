@@ -1,25 +1,847 @@
 <!DOCTYPE html>
-<html lang="en" class="dark">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
-    <title>DelightSoftdev | Creative Developer</title>
-    <meta name="description" content="Portfolio of Elias Thorne, Senior Creative Developer." />
-    <meta name="robots" content="index, follow" />
-    <meta property="og:title" content="DelightSoftdev | Creative Developer" />
-    <meta property="og:description" content="Portfolio of DelightSoftdev, Senior Creative Developer." />
-    <meta property="og:type" content="website" />
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="DelightSoftdev | Creative Developer" />
-    <meta name="twitter:description" content="Portfolio of DelightSoftdev, Senior Creative Developer." />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-    <script type="module" crossorigin src="index-C_mleNDb.js"></script>
-    <link rel="stylesheet" crossorigin href="index-DwiGVQSG.css">
-  </head>
-  <body class="bg-background text-foreground antialiased selection:bg-primary/30 selection:text-primary">
-    <div id="root"></div>
-  </body>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ayetowo Friday Sejiro | Senior Web Developer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Space+Grotesk:wght@500;600&amp;display=swap');
+        
+        :root {
+            --accent: 34 211 238;
+        }
+        
+        .tail-container {
+            font-family: 'Inter', system-ui, sans-serif;
+        }
+        
+        .heading-font {
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+        .hero-bg {
+            background: linear-gradient(135deg, #0f172a 0%, #1e2937 100%);
+        }
+
+        .glass {
+            background: rgba(15, 23, 42, 0.75);
+            backdrop-filter: blur(16px);
+        }
+
+        .project-card {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .project-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+        }
+
+        .nav-link {
+            position: relative;
+        }
+        
+        .nav-link:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -2px;
+            left: 0;
+            background-color: rgb(34 211 238);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover:after,
+        .nav-link.active:after {
+            width: 100%;
+        }
+
+        .section-header {
+            position: relative;
+        }
+        
+        .section-header:after {
+            content: '';
+            position: absolute;
+            width: 60px;
+            height: 3px;
+            background: rgb(34 211 238);
+            bottom: -8px;
+            left: 0;
+        }
+
+        .toast {
+            animation: slideUp 0.3s ease forwards;
+        }
+
+        @keyframes slideUp {
+            from {
+                transform: translateY(20px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body class="tail-container bg-zinc-950 text-zinc-200">
+    <!-- NAVBAR -->
+    <nav class="sticky top-0 z-50 glass border-b border-zinc-800">
+        <div class="max-w-7xl mx-auto px-6 py-5 flex items-center justify-between">
+            <div class="flex items-center gap-x-3">
+                <img src="face.jpg" alt="Logo" class="w-9 h-9 bg-cyan-500 rounded-2xl flex items-center justify-center text-white font-bold text-xl">
+                <div>
+                    <span class="heading-font text-2xl font-semibold tracking-tighter">FRIDAY</span>
+                </div>
+            </div>
+            
+            <!-- Desktop Menu -->
+            <div class="hidden md:flex items-center gap-x-8 text-sm font-medium">
+                <a href="#home" onclick="navigateTo('home')" class="nav-link active text-zinc-300 hover:text-white">Home</a>
+                <a href="#skills" onclick="navigateTo('skills')" class="nav-link text-zinc-300 hover:text-white">Skills</a>
+                <a href="#experience" onclick="navigateTo('experience')" class="nav-link text-zinc-300 hover:text-white">Experience</a>
+                <a href="#projects" onclick="navigateTo('projects')" class="nav-link text-zinc-300 hover:text-white">Projects</a>
+                <a href="#education" onclick="navigateTo('education')" class="nav-link text-zinc-300 hover:text-white">Education</a>
+                <a href="#contact" onclick="navigateTo('contact')" class="nav-link text-zinc-300 hover:text-white">Contact</a>
+            </div>
+            
+            <div class="flex items-center gap-x-4">
+                <a href="#" onclick="downloadCV()" 
+                   class="px-5 py-2.5 text-sm font-semibold border border-cyan-400 text-cyan-400 hover:bg-cyan-400 hover:text-zinc-950 rounded-3xl transition-all flex items-center gap-x-2">
+                    <i class="fa-solid fa-download"></i>
+                    <span>CV</span>
+                </a>
+                
+                <!-- Mobile Hamburger -->
+                <button id="mobile-menu-btn"
+                        class="md:hidden w-11 h-11 flex items-center justify-center text-2xl">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden fixed inset-0 bg-zinc-950 z-50 pt-20 px-6">
+            <div class="flex flex-col gap-y-6 text-lg font-medium">
+                <a href="#home" onclick="toggleMobileMenu()" class="py-3 border-b border-zinc-800">Home</a>
+                <a href="#skills" onclick="toggleMobileMenu()" class="py-3 border-b border-zinc-800">Skills</a>
+                <a href="#experience" onclick="toggleMobileMenu()" class="py-3 border-b border-zinc-800">Experience</a>
+                <a href="#projects" onclick="toggleMobileMenu()" class="py-3 border-b border-zinc-800">Projects</a>
+                <a href="#education" onclick="toggleMobileMenu()" class="py-3 border-b border-zinc-800">Education</a>
+                <a href="#contact" onclick="toggleMobileMenu()" class="py-3 border-b border-zinc-800">Contact</a>
+                
+                <div class="pt-6">
+                    <a href="#" onclick="downloadCV();toggleMobileMenu()" 
+                       class="w-full flex justify-center items-center gap-x-3 bg-cyan-500 hover:bg-cyan-400 transition-colors text-zinc-950 font-semibold py-4 rounded-3xl">
+                        <i class="fa-solid fa-download"></i>
+                        DOWNLOAD CV
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <section id="home" class="hero-bg min-h-screen flex items-center pt-16">
+        <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
+            <div class="space-y-8">
+                <div class="inline-flex items-center gap-x-2 bg-zinc-900 border border-zinc-700 rounded-3xl px-5 py-2 text-sm">
+                    <div class="w-2 h-2 bg-emerald-400 rounded-full animate-pulse"></div>
+                    <span class="text-emerald-400 font-medium">Available for opportunities</span>
+                </div>
+                
+                <h1 class="heading-font text-6xl md:text-7xl font-semibold tracking-tighter leading-none">
+                    AYETOWO,<br>FRIDAY SEJIRO
+                </h1>
+                
+                <div class="flex items-center gap-x-4">
+                    <div class="h-px w-12 bg-cyan-400"></div>
+                    <p class="text-2xl text-cyan-300 font-light">Senior Web Developer &amp; Full Stack Engineer</p>
+                </div>
+                
+                <p class="max-w-md text-zinc-400 text-lg">
+                    Highly motivated Full Stack Web Developer with 5+ years of experience building scalable, secure, and high-performance web applications. Specialized in PHP, JavaScript, MySQL, and modern front-end tech.
+                </p>
+                
+                <div class="flex flex-wrap gap-4">
+                    <button onclick="document.getElementById('projects').scrollIntoView({ behavior: 'smooth' })" 
+                            class="px-8 py-4 bg-white text-zinc-900 font-semibold rounded-3xl flex items-center gap-x-3 hover:scale-105 transition-transform">
+                        <span>View Projects</span>
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+                    
+                    <button onclick="document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })" 
+                            class="px-8 py-4 border border-zinc-400 hover:border-white font-medium rounded-3xl transition-all">
+                        Contact Me
+                    </button>
+                    
+                    <button onclick="downloadCV()" 
+                            class="px-8 py-4 border border-cyan-400 text-cyan-400 hover:bg-cyan-400 hover:text-zinc-950 font-medium rounded-3xl transition-all flex items-center gap-x-2">
+                        <i class="fa-solid fa-download"></i>
+                        <span>CV</span>
+                    </button>
+                </div>
+                
+                <div class="flex items-center gap-x-8 text-sm pt-6">
+                    <div class="flex items-center gap-x-2">
+                        <i class="fa-solid fa-location-dot text-cyan-400"></i>
+                        <span>Badagry, Lagos, Nigeria</span>
+                    </div>
+                    <div class="flex items-center gap-x-2">
+                        <i class="fa-solid fa-envelope text-cyan-400"></i>
+                        <a href="mailto:sejirofriday123@gmail.com" class="hover:text-cyan-400">sejirofriday123@gmail.com</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Hero Visual -->
+            <div class="hidden md:flex justify-center">
+                <div class="relative">
+                    <div class="w-80 h-80 bg-gradient-to-br from-cyan-400 via-indigo-500 to-emerald-400 rounded-[4rem] rotate-12 shadow-2xl"></div>
+                    <div class="absolute inset-0 flex items-center justify-center -rotate-10">
+                        <div class="w-72 h-72 bg-zinc-900 rounded-3xl overflow-hidden border-8 border-zinc-800">
+                            <div class="h-full w-full bg-[radial-gradient(at_center,#27272a_30%,#18181b)] flex items-center justify-center">
+                                <div class="text-center">
+                                    <img src="face.jpg" alt="Profile Image" class="w-50 h-50 rounded-full mx-auto">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="absolute bottom-10 left-1/2 hidden md:flex flex-col items-center">
+            <div class="text-xs tracking-widest text-zinc-500 mb-2">SCROLL TO EXPLORE</div>
+            <div class="w-5 h-9 border border-zinc-400 rounded-full flex justify-center pt-2">
+                <div class="w-1 h-2 bg-cyan-400 rounded-full animate-bounce"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills" class="py-24 bg-zinc-900">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <span class="px-4 py-1.5 bg-zinc-800 text-cyan-400 text-sm font-medium rounded-3xl">EXPERTISE</span>
+                <h2 class="heading-font text-5xl font-semibold mt-4">Technical Arsenal</h2>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Core Stack -->
+                <div class="glass border border-zinc-700 rounded-3xl p-8">
+                    <div class="flex items-center gap-x-3 mb-6">
+                        <i class="fa-solid fa-code text-3xl text-cyan-400"></i>
+                        <h3 class="text-2xl font-semibold">Core Stack</h3>
+                    </div>
+                    <div class="flex flex-wrap gap-3">
+                        <span class="skill-tag">PHP</span>
+                        <span class="skill-tag">JavaScript</span>
+                        <span class="skill-tag">HTML5</span>
+                        <span class="skill-tag">CSS3</span>
+                        <span class="skill-tag">Tailwind CSS</span>
+                        <span class="skill-tag">Bootstrap</span>
+                        <span class="skill-tag">Material-UI</span>
+                        <span class="skill-tag">jQuery</span>
+                    </div>
+                </div>
+                
+                <!-- Backend &amp; Data -->
+                <div class="glass border border-zinc-700 rounded-3xl p-8">
+                    <div class="flex items-center gap-x-3 mb-6">
+                        <i class="fa-solid fa-database text-3xl text-emerald-400"></i>
+                        <h3 class="text-2xl font-semibold">Data &amp; Servers</h3>
+                    </div>
+                    <div class="flex flex-wrap gap-3">
+                        <span class="skill-tag">MySQL</span>
+                        <span class="skill-tag">MongoDB</span>
+                        <span class="skill-tag">Apache</span>
+                        <span class="skill-tag">REST APIs</span>
+                    </div>
+                </div>
+                
+                <!-- Environment -->
+                <div class="glass border border-zinc-700 rounded-3xl p-8">
+                    <div class="flex items-center gap-x-3 mb-6">
+                        <i class="fa-solid fa-laptop-code text-3xl text-violet-400"></i>
+                        <h3 class="text-2xl font-semibold">Platforms</h3>
+                    </div>
+                    <div class="flex flex-wrap gap-3">
+                        <span class="skill-tag">Linux</span>
+                        <span class="skill-tag">Windows</span>
+                        <span class="skill-tag">macOS</span>
+                        <span class="skill-tag">WordPress</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-12 text-center">
+                <h4 class="text-zinc-400 mb-6">Core Competencies</h4>
+                <div class="flex flex-wrap justify-center gap-4 text-sm">
+                    <div class="px-6 py-3 bg-zinc-800 rounded-3xl">Software Design Patterns</div>
+                    <div class="px-6 py-3 bg-zinc-800 rounded-3xl">RESTful API Integration</div>
+                    <div class="px-6 py-3 bg-zinc-800 rounded-3xl">CBT Systems</div>
+                    <div class="px-6 py-3 bg-zinc-800 rounded-3xl">Agile Methodologies</div>
+                    <div class="px-6 py-3 bg-zinc-800 rounded-3xl">Code Reviews &amp; Optimization</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- EXPERIENCE -->
+    <section id="experience" class="py-24">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="flex justify-between items-end mb-12">
+                <div>
+                    <span class="text-cyan-400 text-sm font-medium">JOURNEY</span>
+                    <h2 class="heading-font text-5xl font-semibold">Professional Experience</h2>
+                </div>
+            </div>
+            
+            <div class="space-y-16">
+                <!-- LASUED -->
+                <div class="grid md:grid-cols-12 gap-8 items-start">
+                    <div class="md:col-span-4">
+                        <div class="sticky top-28">
+                            <div class="text-emerald-400 font-mono text-sm">2022 — PRESENT</div>
+                            <h3 class="text-2xl font-semibold mt-2">Senior Web Developer</h3>
+                            <p class="text-zinc-400">Lagos State University of Education (LASUED)</p>
+                        </div>
+                    </div>
+                    <div class="md:col-span-8">
+                        <div class="glass border border-zinc-700 rounded-3xl p-8 space-y-6">
+                            <ul class="space-y-4 text-zinc-300">
+                                <li class="flex gap-x-4">
+                                    <span class="text-cyan-400 mt-1">▹</span>
+                                    <span>Engineered institutional platforms: Computer-Based Test (CBT) System, E-APER Staff Evaluation Software, and Legacy Result Processing System</span>
+                                </li>
+                                <li class="flex gap-x-4">
+                                    <span class="text-cyan-400 mt-1">▹</span>
+                                    <span>Integrated payment gateways (PayTech, MoneyCredit) and third-party APIs</span>
+                                </li>
+                                <li class="flex gap-x-4">
+                                    <span class="text-cyan-400 mt-1">▹</span>
+                                    <span>Implemented responsive designs with Bootstrap &amp; Material-UI</span>
+                                </li>
+                                <li class="flex gap-x-4">
+                                    <span class="text-cyan-400 mt-1">▹</span>
+                                    <span>Led code reviews and enforced security &amp; coding standards</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- ASCON -->
+                <div class="grid md:grid-cols-12 gap-8 items-start">
+                    <div class="md:col-span-4">
+                        <div class="sticky top-28">
+                            <div class="text-emerald-400 font-mono text-sm">2021 — 2022</div>
+                            <h3 class="text-2xl font-semibold mt-2">Web Developer (Intern)</h3>
+                            <p class="text-zinc-400">Administrative Staff College of Nigeria (ASCON)</p>
+                        </div>
+                    </div>
+                    <div class="md:col-span-8">
+                        <div class="glass border border-zinc-700 rounded-3xl p-8 space-y-6">
+                            <ul class="space-y-4 text-zinc-300">
+                                <li class="flex gap-x-4">
+                                    <span class="text-cyan-400 mt-1">▹</span>
+                                    <span>Developed custom PHP + jQuery applications with MySQL &amp; MongoDB backends</span>
+                                </li>
+                                <li class="flex gap-x-4">
+                                    <span class="text-cyan-400 mt-1">▹</span>
+                                    <span>Built responsive front-ends using modern HTML5 &amp; CSS3</span>
+                                </li>
+                                <li class="flex gap-x-4">
+                                    <span class="text-cyan-400 mt-1">▹</span>
+                                    <span>Participated in Agile ceremonies and resolved production issues</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects" class="py-24 bg-zinc-900">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-12 gap-6">
+                <div>
+                    <span class="text-cyan-400 text-sm font-medium">SHOWCASE</span>
+                    <h2 class="heading-font text-5xl font-semibold">Featured Projects</h2>
+                </div>
+                
+                <div class="flex flex-wrap gap-3" id="project-filters">
+                    <button onclick="filterProjects('all')" class="active-filter px-6 py-2 text-sm font-medium rounded-3xl border border-cyan-400 text-cyan-400">All</button>
+                    <button onclick="filterProjects('php')" class="px-6 py-2 text-sm font-medium rounded-3xl border border-zinc-700 hover:border-zinc-400">PHP Apps</button>
+                    <button onclick="filterProjects('wordpress')" class="px-6 py-2 text-sm font-medium rounded-3xl border border-zinc-700 hover:border-zinc-400">WordPress</button>
+                </div>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8" id="projects-grid">
+                <!-- Populated by JS -->
+            </div>
+        </div>
+    </section>
+
+    <!-- EDUCATION -->
+    <section id="education" class="py-24">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid md:grid-cols-12 gap-12">
+                <div class="md:col-span-5">
+                    <h2 class="heading-font text-5xl font-semibold mb-8">Education</h2>
+                    
+                    <div class="space-y-10">
+                        <div>
+                            <div class="font-mono text-sm text-emerald-400">IN-VIEW</div>
+                            <div class="text-2xl font-semibold mt-1">B.Sc. Computer Science</div>
+                            <div class="text-zinc-400">Lagos State University of Education, Ojo</div>
+                        </div>
+                        
+                        <div>
+                            <div class="font-mono text-sm text-emerald-400">2014 — 2017</div>
+                            <div class="text-2xl font-semibold mt-1">NCE Computer Science / Physics</div>
+                            <div class="text-zinc-400">Adeniran Ogunsanya College of Education, Ijanikin</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="md:col-span-7">
+                    <h2 class="heading-font text-4xl font-semibold mb-8">Certifications</h2>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                        <div class="glass border border-zinc-700 rounded-3xl p-6">
+                            <div class="flex justify-between">
+                                <div>
+                                    <div class="font-semibold">Certified PHP Developer</div>
+                                    <div class="text-sm text-zinc-400">PHP Institute • 2021</div>
+                                </div>
+                                <i class="fa-solid fa-certificate text-4xl text-amber-400"></i>
+                            </div>
+                        </div>
+                        <div class="glass border border-zinc-700 rounded-3xl p-6">
+                            <div class="flex justify-between">
+                                <div>
+                                    <div class="font-semibold">Generative AI Foundation</div>
+                                    <div class="text-sm text-zinc-400">2026</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="glass border border-zinc-700 rounded-3xl p-6">
+                            <div class="flex justify-between">
+                                <div>
+                                    <div class="font-semibold">Introduction to Cybersecurity</div>
+                                    <div class="text-sm text-zinc-400">2026</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="glass border border-zinc-700 rounded-3xl p-6">
+                            <div class="flex justify-between">
+                                <div>
+                                    <div class="font-semibold">AI for Oceans / Hour of Code</div>
+                                    <div class="text-sm text-zinc-400">2026</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="py-24 bg-zinc-900">
+        <div class="max-w-4xl mx-auto px-6">
+            <div class="text-center mb-12">
+                <span class="inline-flex items-center gap-x-2 text-emerald-400">
+                    <i class="fa-solid fa-paper-plane"></i>
+                    <span class="uppercase text-sm font-medium tracking-widest">Let's Connect</span>
+                </span>
+                <h2 class="heading-font text-5xl font-semibold mt-3">Get In Touch</h2>
+            </div>
+            
+            <div class="glass border border-zinc-700 rounded-3xl p-10 md:p-16">
+                <form id="contact-form" onsubmit="handleSubmit(event)" class="space-y-8">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-sm mb-2 text-zinc-400">Full Name</label>
+                            <input id="name" type="text" required
+                                   class="w-full bg-zinc-800 border border-zinc-700 focus:border-cyan-400 rounded-2xl px-6 py-4 outline-none transition-colors">
+                        </div>
+                        <div>
+                            <label class="block text-sm mb-2 text-zinc-400">Email Address</label>
+                            <input id="email" type="email" required
+                                   class="w-full bg-zinc-800 border border-zinc-700 focus:border-cyan-400 rounded-2xl px-6 py-4 outline-none transition-colors">
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <label class="block text-sm mb-2 text-zinc-400">Message</label>
+                        <textarea id="message" rows="6" required
+                                  class="w-full bg-zinc-800 border border-zinc-700 focus:border-cyan-400 rounded-3xl px-6 py-5 outline-none resize-none"></textarea>
+                    </div>
+                    
+                    <button type="submit"
+                            class="w-full md:w-auto px-12 py-5 bg-cyan-500 hover:bg-cyan-400 transition-colors text-zinc-950 font-semibold text-lg rounded-3xl flex items-center justify-center gap-x-3 mx-auto">
+                        SEND MESSAGE
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+                </form>
+            </div>
+            
+            <!-- Contact Info -->
+            <div class="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8 text-center md:text-left">
+                <div class="flex flex-col items-center md:items-start">
+                    <i class="fa-solid fa-phone text-3xl text-cyan-400 mb-4"></i>
+                    <div class="font-medium">+234 705 352 6435</div>
+                </div>
+                <div class="flex flex-col items-center md:items-start">
+                    <i class="fa-solid fa-envelope text-3xl text-cyan-400 mb-4"></i>
+                    <a href="mailto:sejirofriday123@gmail.com" class="font-medium hover:text-cyan-400">sejirofriday123@gmail.com</a>
+                </div>
+                <div class="flex flex-col items-center md:items-start">
+                    <i class="fa-solid fa-map-marker-alt text-3xl text-cyan-400 mb-4"></i>
+                    <div class="font-medium">Badagry, Lagos, Nigeria</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-black py-12 border-t border-zinc-900">
+        <div class="max-w-7xl mx-auto px-6 text-center text-zinc-500 text-sm">
+            <p>© 2026 Ayetowo Friday Sejiro. Built with passion using Tailwind &amp; Vanilla JS.</p>
+        </div>
+    </footer>
+
+    <!-- PROJECT MODAL -->
+    <div id="project-modal" class="hidden fixed inset-0 bg-black/70 z-[100] flex items-center justify-center">
+        <div class="max-w-lg w-full mx-4 bg-zinc-900 rounded-3xl overflow-hidden">
+            <div class="p-8">
+                <div id="modal-content"></div>
+            </div>
+            <div class="border-t border-zinc-800 p-5 flex justify-end">
+                <button onclick="closeModal()" 
+                        class="px-8 py-3 text-sm font-medium">CLOSE</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Tailwind script already loaded via CDN
+        function initTailwind() {
+            // Nothing extra needed
+        }
+        
+        // Projects data
+        const projects = [
+            {
+                id: 1,
+                title: "Computer Based Test (CBT) System",
+                category: "php",
+                tech: "PHP, JavaScript, MySQL, HTML/CSS",
+                desc: "Full-featured examination platform used for student and promotional exams at LASUED.",
+                icon: "<img src='cbt.png' alt='CBT Icon' class='w-50 h-50'>"
+            },
+            {
+                id: 2,
+                title: "E-APER Staff Evaluation",
+                category: "php",
+                tech: "PHP, MySQL, Bootstrap",
+                desc: "Comprehensive staff promotion and yearly performance evaluation software.",
+                icon: "<img src='E-aper.png' alt='E-APER Icon' class='w-50 h-50'>"
+            },
+            {
+                id: 3,
+                title: "Result Processing System",
+                category: "php",
+                tech: "PHP, MySQL, JavaScript",
+                desc: "Legacy academic result processing platform for Adeniran Ogunsanya College of Education.",
+                icon: "<img src='result.png' alt='Result Icon' class='w-50 h-50'>"
+            },
+            {
+                id: 4,
+                title: "HRM Software",
+                category: "php",
+                tech: "Core PHP, MySQL",
+                desc: "Human Resource Management system with employee records and workflows.",
+                icon: "<img src='hrm.png' alt='HRM Icon' class='w-50 h-50'>"
+            },
+            {
+                id: 5,
+                title: "Hotel Management System",
+                category: "php",
+                tech: "PHP, MySQL, JavaScript",
+                desc: "Complete booking engine with reservation and room management.",
+                icon: "<img src='hotel.png' alt='Hotel Icon' class='w-50 h-50'>"
+            },
+            {
+                id: 6,
+                title: "EBO FM Radio Station",
+                category: "php",
+                tech: "WordPress, PHP",
+                desc: "Official website for one of Ondo’s premier radio stations.",
+                icon: "<img src='radio.png' alt='EBO Icon' class='w-50 h-50'>"
+            },
+            {
+                id: 7,
+                title: "YAN Youth Portal",
+                category: "wordpress",
+                tech: "WordPress",
+                desc: "Youth Association of Nigeria (Ondo Chapter) official website.",
+                icon: "<img src='ondo.png' alt='YAN Icon' class='w-50 h-50'>"
+            },
+            {
+                id: 8,
+                title: "Real Estate Platform",
+                category: "wordpress",
+                tech: "WordPress",
+                desc: "Modern property listing and management website.",
+                icon: "<img src='real-estate.png' alt='Real Estate Icon' class='w-50 h-50'>"
+            },
+            {
+                id: 9,
+                title: "NGO Website",
+                category: "wordpress",
+                tech: "WordPress",
+                desc: "Professional website for a non-governmental organization.",
+                icon: "<img src='ngo.png' alt='NGO Icon' class='w-50 h-50'>x"
+            },
+
+            {
+                id: 10,
+                title: "Organization File Management System",
+                category: "php",
+                tech: "PHP, MySQL, JavaScript",
+                desc: "Efficient file management solution for organizational needs.",
+                icon: "<img src='vault.png' alt='File Management Icon' class='w-50 h-50'>"
+            },
+
+            {
+                id: 11,
+                title: "Online Restaurant Ordering System",
+                category: "php",
+                tech: "PHP, MySQL, JavaScript",
+                desc: "A web-based platform for restaurants to manage orders and deliveries.",
+                icon: "<img src='food.png' alt='File Management Icon' class='w-50 h-50'>"
+            },
+
+            {
+                id: 12,
+                title: "E-Voting System",
+                category: "php",
+                tech: "PHP, MySQL, JavaScript",
+                desc: "Secure and efficient voting platform for organizations.",
+                icon: "<img src='voting.png' alt='E-Voting Icon' class='w-50 h-50'>"
+            }
+        ]
+        
+        // Render projects
+        function renderProjects(filteredProjects) {
+            const container = document.getElementById("projects-grid")
+            container.innerHTML = ""
+            
+            filteredProjects.forEach(project => {
+                const cardHTML = `
+                    <div onclick="showProjectModal(${project.id})" class="project-card glass border border-zinc-700 rounded-3xl overflow-hidden cursor-pointer group">
+                        <div class="h-48 bg-gradient-to-br from-zinc-800 to-zinc-900 flex items-center justify-center text-7xl transition-transform group-hover:scale-110">
+                            ${project.icon}
+                        </div>
+                        <div class="p-7">
+                            <div class="flex justify-between items-start">
+                                <h3 class="font-semibold text-xl">${project.title}</h3>
+                            </div>
+                            <p class="text-zinc-400 text-sm mt-2 line-clamp-3">${project.desc}</p>
+                            <div class="mt-6 text-xs font-mono text-cyan-400">${project.tech}</div>
+                        </div>
+                    </div>
+                `
+                container.innerHTML += cardHTML
+            })
+        }
+        
+        // Filter projects
+        window.filterProjects = function(category) {
+            const buttons = document.querySelectorAll("#project-filters button")
+            buttons.forEach(btn => btn.classList.remove("active-filter", "border-cyan-400", "text-cyan-400"))
+            
+            // Find the clicked button
+            const activeBtn = Array.from(buttons).find(btn => 
+                (category === 'all' && btn.textContent === 'All') || 
+                (category === 'php' && btn.textContent === 'PHP Apps') ||
+                (category === 'wordpress' && btn.textContent === 'WordPress')
+            )
+            if (activeBtn) activeBtn.classList.add("active-filter", "border-cyan-400", "text-cyan-400")
+            
+            let filtered = projects
+            if (category !== 'all') {
+                filtered = projects.filter(p => p.category === category)
+            }
+            renderProjects(filtered)
+        }
+        
+        // Show modal
+        window.showProjectModal = function(id) {
+            const project = projects.find(p => p.id === id)
+            if (!project) return
+            
+            const modalContent = document.getElementById("modal-content")
+            modalContent.innerHTML = `
+                <div class="flex items-center gap-x-4 mb-9">
+                    <div style="width: 120%;">${project.icon}</div>
+                    <div>
+                    </div>
+                </div>
+                <p class="text-zinc-300 leading-relaxed">${project.desc}</p>
+                <div class="mt-10 pt-8 border-t border-zinc-700 text-xs uppercase tracking-widest text-zinc-400">
+                    Built with modern web technologies • Production deployed
+                </div>
+            `
+            document.getElementById("project-modal").classList.remove("hidden")
+            document.getElementById("project-modal").classList.add("flex")
+        }
+        
+        window.closeModal = function() {
+            const modal = document.getElementById("project-modal")
+            modal.classList.add("hidden")
+            modal.classList.remove("flex")
+        }
+        
+        // Form submission
+        window.handleSubmit = function(e) {
+            e.preventDefault()
+            
+            const name = document.getElementById("name").value
+            const email = document.getElementById("email").value
+            
+            if (name && email) {
+                // Show toast
+                showToast(`Thank you, ${name.split(" ")[0]}! Your message has been received.`)
+                
+                // Reset form
+                document.getElementById("contact-form").reset()
+            }
+        }
+        
+        function showToast(message) {
+            const toast = document.createElement("div")
+            toast.className = `fixed bottom-8 right-8 bg-zinc-800 border border-cyan-400 text-white px-8 py-4 rounded-3xl shadow-2xl flex items-center gap-x-3 toast z-[200]`
+            toast.innerHTML = `
+                <i class="fa-solid fa-check-circle text-emerald-400"></i>
+                <span>${message}</span>
+            `
+            document.body.appendChild(toast)
+            
+            setTimeout(() => {
+                toast.style.transition = "all 0.4s ease"
+                toast.style.opacity = "0"
+                toast.style.transform = "translateY(20px)"
+                setTimeout(() => toast.remove(), 400)
+            }, 4000)
+        }
+        
+        // Download CV
+        window.downloadCV = function() {
+            showToast("CV download started (original DOCX attached in conversation)")
+            // In real environment this would trigger a download
+            // For demo purposes, we show toast
+        }
+        
+        // Mobile menu
+        function toggleMobileMenu() {
+            const menu = document.getElementById("mobile-menu")
+            const icon = document.getElementById("mobile-menu-btn").querySelector("i")
+            
+            if (menu.classList.contains("hidden")) {
+                menu.classList.remove("hidden")
+                icon.classList.remove("fa-bars")
+                icon.classList.add("fa-xmark")
+            } else {
+                menu.classList.add("hidden")
+                icon.classList.add("fa-bars")
+                icon.classList.remove("fa-xmark")
+            }
+        }
+        
+        // Smooth scroll navigation
+        window.navigateTo = function(section) {
+            document.getElementById(section).scrollIntoView({
+                behavior: "smooth"
+            })
+            
+            // Close mobile menu if open
+            const mobileMenu = document.getElementById("mobile-menu")
+            if (!mobileMenu.classList.contains("hidden")) {
+                toggleMobileMenu()
+            }
+        }
+        
+        // Active nav link
+        function updateActiveNav() {
+            const sections = ["home", "skills", "experience", "projects", "education", "contact"]
+            const navLinks = document.querySelectorAll(".nav-link")
+            
+            window.addEventListener("scroll", () => {
+                let current = ""
+                
+                sections.forEach(sectionId => {
+                    const section = document.getElementById(sectionId)
+                    const sectionTop = section.offsetTop
+                    
+                    if (scrollY >= sectionTop - 200) {
+                        current = sectionId
+                    }
+                })
+                
+                navLinks.forEach(link => {
+                    link.classList.remove("active")
+                    if (link.getAttribute("href") === `#${current}`) {
+                        link.classList.add("active")
+                    }
+                })
+            })
+        }
+        
+        // Initialize everything
+        function initialize() {
+            // Render all projects initially
+            renderProjects(projects)
+            
+            // Tailwind ready
+            initTailwind()
+            
+            // Lucide icons (if needed)
+            lucide.createIcons()
+            
+            // Active nav
+            updateActiveNav()
+            
+            // Keyboard escape for modal
+            document.addEventListener("keydown", function(e) {
+                if (e.key === "Escape") {
+                    const modal = document.getElementById("project-modal")
+                    if (!modal.classList.contains("hidden")) closeModal()
+                }
+            })
+            
+            // Click outside modal to close
+            const modal = document.getElementById("project-modal")
+            modal.addEventListener("click", function(e) {
+                if (e.target === modal) closeModal()
+            })
+            
+            console.log('%c✅ Portfolio ready for Ayetowo Friday Sejiro', 'color:#22d3ee; font-family:monospace')
+        }
+        
+        // Boot the app
+        window.onload = initialize
+    </script>
+</body>
 </html>
